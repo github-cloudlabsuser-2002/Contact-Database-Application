@@ -110,5 +110,17 @@ namespace CRUD_application_2.Controllers
 
             return HttpNotFound();
         }
+
+        public ActionResult Search(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                return View(userlist);
+            }
+
+            var results = userlist.Where(u => u.Name.Contains(name));
+            return View(results);
+        }
+
     }
 }
